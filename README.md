@@ -1,120 +1,173 @@
-# 📊 Sales Dashboard Analysis (Excel)
+# Sales Data Analysis & Customer Insight Project
 
-## 🎯 Objective
 
-This project aims to analyze sales performance using transactional data and build an interactive Excel dashboard to support business decision-making.
+# 1. Business Framing
 
----
+## Problem Statement
 
-## 📁 Dataset
+The business is currently facing several challenges in its sales and customer management system:
 
-The dataset contains detailed sales transactions, including:
+* Negative profit observed in multiple transactions
+* Lack of visibility into top-performing products
+* No customer segmentation to identify high-value customers
+* Inefficient promotional strategies
 
-* Product (Hàng)
-* Customer (Khách hàng)
-* Quantity sold (SL Xuất)
-* Revenue (Tiền Xuất)
-* Profit (Doanh Thu)
-* Date (Ngày Xuất)
 
----
+## Objectives
 
-## 🧹 Data Cleaning
+* Improve overall profitability
+* Identify top-performing and loss-making products
+* Segment customers based on behavior and value
+* Provide actionable recommendations for business growth
 
-Key preprocessing steps:
 
-* Converted numeric fields from text to proper number format
-* Standardized date format
-* Created additional time-based features:
+# 2. Data Understanding & Preparation
 
-  * Year
-  * Quarter
-* Removed invalid and negative records (returns or input errors)
+## Dataset Overview
 
----
+* Source: Sales dataset (Excel)
+* Size: Approximately 900 rows
+* Key Features:
 
-## 📊 Dashboard Features
+  * Product (Hàng, Mã)
+  * Revenue (Doanh Thu)
+  * Cost (Tiền Nhập)
+  * Profit (PROFIT)
+  * Quantity (SL Xuất, SL Xuất KM)
+  * Date (Ngày Xuất, MONTH, YEAR)
+  * Customer (Khách hàng)
 
-The dashboard is built using **Excel Pivot Tables and Slicers**, including:
 
-### 🔝 KPI Metrics
+## Data Cleaning
+
+* Converted date columns to proper datetime format
+* Removed invalid and inconsistent records
+* Checked for:
+
+  * Negative or abnormal profit values
+  * Missing or zero quantities
+* Created new features:
+
+  * Profit = Revenue - Cost
+  * Total Quantity = SL Xuất + SL Xuất KM
+
+
+## Exploratory Data Analysis (EDA)
+
+### Time-based Analysis
+
+* Monthly revenue trend
+* Identification of peak sales periods
+
+### Product Analysis
+
+* Top-performing products by revenue
+* Loss-making products impacting profit
+
+### Customer Analysis
+
+* Top customers by revenue contribution
+* Distribution of customer purchasing behavior
+
+
+## Data Modeling (ERD)
+
+Entity Relationship Diagram:
+
+```
+Customer ──< Orders ──< OrderDetails >── Product
+```
+
+## SQL Techniques Used
+
+* CTE (Common Table Expressions)
+* Window Functions (ROW_NUMBER, RANK, SUM OVER)
+
+
+# 3. Customer Segmentation (RFM Analysis)
+
+## RFM Model
+
+* Recency: How recently a customer purchased
+* Frequency: How often they purchase
+* Monetary: How much they spend
+
+
+## Segmentation Results
+
+* VIP Customers: High frequency and high spending
+* Regular Customers: Moderate engagement
+* Churn Risk: Low activity and low value
+
+
+## Business Value
+
+* Personalized offers for VIP customers
+* Re-engagement campaigns for churn-risk customers
+* Improved customer retention strategy
+
+
+# 4. Recommendation System
+
+## Key Insights
+
+* Several products generate high revenue but negative profit
+* A small number of products contribute to most revenue
+* A minority of customers drive the majority of sales
+
+
+## Recommendations
+
+* Discontinue or reprice loss-making products
+* Focus marketing efforts on top-performing products
+* Implement loyalty programs for VIP customers
+* Optimize promotion strategy to improve profitability
+
+
+# 5. Dashboard & Presentation
+
+## Dashboard Overview
+
+The dashboard provides a comprehensive view of:
 
 * Total Revenue
 * Total Profit
 * Total Quantity Sold
-
-### 📈 Visualizations
-
-* Top-selling products
-* Revenue by product
-* Top customers by quantity
 * Revenue trends over time
+* Top products
+* Top customers
 
-### 🎛 Interactive Filters
 
-* Year
-* Quarter
-* Product
-* Customer
+## Features
 
----
+* Interactive filters (Date, Product, Customer)
+* Dynamic charts and KPIs
+* Drill-down capabilities
 
-## 🔍 Key Insights
 
-* A small number of products contribute the majority of total revenue
-* Certain customers purchase frequently → potential key accounts
-* Some transactions show negative values → likely returns or data issues
-* Revenue is concentrated within specific time periods
+## Data Storytelling Flow
 
----
+1. Problem Identification
+2. Data Overview
+3. Analysis
+4. Insights
+5. Recommendations
 
-## 🛠 Tools Used
 
-* Microsoft Excel
+# Conclusion
 
-  * Pivot Table
-  * Pivot Chart
-  * Slicer
+This project demonstrates how data analysis can:
 
----
+* Transform raw sales data into actionable insights
+* Identify critical business issues
+* Support strategic decision-making
 
-## 📸 Dashboard Preview
 
-![Dashboard](images/dashboard.png)
+# Tools Used
 
----
+* Excel (Pivot Tables)
+* Power BI (Dashboard)
+* SQL (Data Analysis)
+* Python (Optional for advanced analysis)
 
-## 🚀 How to Use
 
-1. Open the Excel file in the `dashboard/` folder
-2. Use slicers to filter data dynamically
-3. Analyze performance by product, customer, and time
-
----
-
-## 📁 Project Structure
-
-```
-sales-dashboard/
-│
-├── data/
-│   └── raw.xlsx
-│
-├── dashboard/
-│   └── dashboard.xlsx
-│
-├── images/
-│   └── dashboard.png
-│
-├── README.md
-```
-
----
-
-## 💡 Future Improvements
-
-* Add product categorization for deeper analysis
-* Build Power BI version for enhanced visualization
-* Apply customer segmentation techniques (RFM, clustering)
-
----
